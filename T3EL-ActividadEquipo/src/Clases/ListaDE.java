@@ -35,10 +35,10 @@ public class ListaDE {
             aux.siguiente = inicio;
             inicio.anterior = aux;
             inicio = aux;
-            return;//Se hace el return para acabajr con la ejecucion del metodo
+            return;//Se hace el return para acabar con la ejecucion del metodo
         }
+        
         //Si se inserta entre dos nodos o tal vez al final :D
-
         NodoDoble<String> actual = inicio;
         while (actual.siguiente != null && nombre.compareToIgnoreCase(actual.siguiente.dato) > 0) {
             actual = actual.siguiente;
