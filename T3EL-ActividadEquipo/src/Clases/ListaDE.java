@@ -114,7 +114,7 @@ public class ListaDE {
         if(estaVacia()) return personas; // Si esta vacia, devolvemos nada
         
         NodoDoble<String> aux = inicio;
-        while(aux!=fin){
+        while(aux!=null){
             String nom = aux.dato;
             personas.add(nom);
             aux = aux.siguiente;
