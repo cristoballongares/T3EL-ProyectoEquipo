@@ -4,9 +4,11 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author crist
+ * @author todos:D
  */
 public class ListaDE {
 
@@ -105,5 +107,19 @@ public class ListaDE {
         }
         return true;
 
+    }
+    
+    public ArrayList<String> getNodos(){
+        ArrayList<String> personas = new ArrayList();
+        if(estaVacia()) return personas; // Si esta vacia, devolvemos nada
+        
+        NodoDoble<String> aux = inicio;
+        while(aux!=fin){
+            String nom = aux.dato;
+            personas.add(nom);
+            aux = aux.siguiente;
+        }
+        
+        return personas;
     }
 }
