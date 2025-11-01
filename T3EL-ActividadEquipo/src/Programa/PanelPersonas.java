@@ -9,7 +9,7 @@ public class PanelPersonas extends JPanel {
 
     private final int x0 = 30;  // margen de inicio (coordenada x para primer nombre)
     private final int y0 = 30; // altura base (coordenada y para todos los nombres)
-    private int anchoRect; // es el espacio a lo ancho de lo que ocupa cada nombre en el panel
+    private int actualy=30;
     private final int altoRect = 30;
     private final int espacio = 50; // tam de las flechitas
     private ListaDE personas;
@@ -18,7 +18,7 @@ public class PanelPersonas extends JPanel {
     public PanelPersonas(ListaDE lista) {
         this.personas = lista;
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(600,150));
+        setPreferredSize(new Dimension(800,350));
     }
 
     @Override
@@ -50,11 +50,14 @@ public class PanelPersonas extends JPanel {
                 // Empezamos por el borde
                 g2d.setColor(Color.BLUE); // color del borde
                 g2d.setStroke(new BasicStroke(2)); // ancho del borde
+                //                g2d.drawRect(actualx, y0, anchoT, altoRect);
+                //                g2d.setColor(Color.GRAY); // Escoger color para rellenar
+                //                g2d.fillRect(actualx, y0, anchoT, altoRect);  // Rellenar con color
                 g2d.drawRoundRect(actualx, y0, anchoT, altoRect, 10, 10); // dibujamos el BORDE
                 
                 // Texto dentro del rectangulo
                 g2d.setColor(Color.BLACK); // color del nombre
-                int posXTexto = actualx + (anchoT-ancho)/2; // pos en x del texto
+                int posXTexto = actualx + (margen)/2; // pos en x del texto
                 int posYTexto = y0 + (altoRect+fm.getAscent())/2-5; // pos en y del texto
                 g2d.drawString(nombre, posXTexto, posYTexto); // Lo ponemos
             
