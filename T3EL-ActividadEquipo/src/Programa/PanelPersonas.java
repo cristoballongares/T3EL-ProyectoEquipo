@@ -15,6 +15,7 @@ public class PanelPersonas extends JPanel {
     private final int espacio = 50; // tam de las flechitas
     private ListaDE personas;
     private int actualx = x0;
+    private boolean descendete = false;
 
     public PanelPersonas(ListaDE lista) {
         this.personas = lista;
@@ -30,7 +31,8 @@ public class PanelPersonas extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON); // suavizar texto
 
         // Obtenemos las personas de la lista DE
-        ArrayList<String> nodos = personas.getNodos();
+        // PERO, el orden de esta depende si se eligio mostrar de forma ascendente o descendente
+        ArrayList<String> nodos = (this.descendete?personas.getDescendente():personas.getNodos());
         System.out.println(nodos.size()); // solo para comprobar que todo funcione bien
         
         // lo ocuparemos para saber cuanto ocupa en PIXELES el nombre
@@ -49,11 +51,6 @@ public class PanelPersonas extends JPanel {
             int margen = 20;
             // ancho total que ocupara el nombre (ancho + margen)
             int anchoT = ancho+margen;
-            
-            if(actualx+anchoT>=600){
-                JOptionPane.showMessageDialog(null, "Se ha alcanzado el limite de personas");
-                return ;
-            }
             
             // dibujamos el rectangulo y adentro el nombre
                 // Empezamos por el borde
@@ -103,4 +100,16 @@ public class PanelPersonas extends JPanel {
             g2d.drawString("(lista vacia)", x0, y0 + altoRect / 2);
         }
     }
+    
+    public void setDescendente(boolean f){
+        this.descendete = f;
+        repaint();
+    }
+    
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(actualx-espacio+20,150);
+    }
+
 }
