@@ -152,7 +152,8 @@ public class Frame extends javax.swing.JFrame {
         // Obtenemos, de que forma lo quiere mostrar?, ascendente o descendente?
         String forma = (String)jComboBox1.getSelectedItem(); 
         boolean ascendente = forma.equals("Descendente");
-        pd.setDescendente(ascendente);
+        pd.setDescendente(ascendente);        
+        jScrollPane1.getHorizontalScrollBar().repaint();
         System.out.println("Agregando: "+jTextField1.getText());
         lde.insertanEnOrden(jTextField1.getText());
         System.out.println(lde.getNodos());
@@ -175,7 +176,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        if (evt.getStateChange()==java.awt.event.ItemEvent.SELECTED) {
             String forma = (String)jComboBox1.getSelectedItem(); 
             boolean descendente = forma.equals("Descendente");
             pd.setDescendente(descendente);
