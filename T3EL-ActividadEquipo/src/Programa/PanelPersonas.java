@@ -3,6 +3,7 @@ package Programa;
 import Clases.ListaDE;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelPersonas extends JPanel {
@@ -25,6 +26,8 @@ public class PanelPersonas extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g); // borramos lo que habia antes:)
         Graphics2D g2d = (Graphics2D) g; // para que se vea mas bonito
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); // suavizar lineas
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON); // suavizar texto
 
         // Obtenemos las personas de la lista DE
         ArrayList<String> nodos = personas.getNodos();
@@ -37,6 +40,7 @@ public class PanelPersonas extends JPanel {
         
         // Colocamos los nombres
         for (int i = 0; i < nodos.size(); i++) {
+            
             String nombre = nodos.get(i);
             
             // Medimos el ancho de este, las unidades son en pixeles
@@ -45,6 +49,11 @@ public class PanelPersonas extends JPanel {
             int margen = 20;
             // ancho total que ocupara el nombre (ancho + margen)
             int anchoT = ancho+margen;
+            
+            if(actualx+anchoT>=600){
+                JOptionPane.showMessageDialog(null, "Se ha alcanzado el limite de personas");
+                return ;
+            }
             
             // dibujamos el rectangulo y adentro el nombre
                 // Empezamos por el borde
@@ -62,7 +71,8 @@ public class PanelPersonas extends JPanel {
                 g2d.drawString(nombre, posXTexto, posYTexto); // Lo ponemos
             
             // Punteros
-            
+            // nodos.szie() = 1
+            // nodos.size() = 5
                 if(i<nodos.size()-1){
                     int inicioX = actualx + anchoT;
                     int finX = inicioX + espacio-10;
@@ -70,6 +80,7 @@ public class PanelPersonas extends JPanel {
                     int posYAbajo = y0 + altoRect / 2 + 8;
 
                     // ref i
+                    // drawLine(x1,y1,x2,y2)
                     g2d.drawLine(inicioX, posY, finX, posY);
                     // diagoanles
                     g2d.drawLine(finX - 5, posY - 5, finX, posY);
@@ -79,8 +90,8 @@ public class PanelPersonas extends JPanel {
                     g2d.drawLine(finX + 10, posYAbajo, inicioX + 9, posYAbajo);
 
                     // diagonales — apuntan al punto de inicio (inicioX + 8)
-                    g2d.drawLine(inicioX + 8, posYAbajo, inicioX + 13, posYAbajo - 5);
-                    g2d.drawLine(inicioX + 8, posYAbajo, inicioX + 13, posYAbajo + 5);
+                    g2d.drawLine(inicioX + 9, posYAbajo, inicioX + 13, posYAbajo - 5);
+                    g2d.drawLine(inicioX + 9, posYAbajo, inicioX + 13, posYAbajo + 5);
                 }
                
             // Aumentamos la posicion de x para el proximo nombre
