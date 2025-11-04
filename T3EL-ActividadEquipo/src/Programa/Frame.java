@@ -14,20 +14,14 @@ import javax.swing.JScrollPane;
  *
  * @author todos
  */
-public class Frame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Frame
-     */
-    ListaDE lde;
-    PanelPersonas pd;
-    public Frame() {
-        initComponents();
-        lde = new ListaDE();
-        pd= new PanelPersonas(lde);
-        jScrollPane1.setViewportView(pd);
-//        jPanel1.setLayout(new java.awt.BorderLayout());
-//        jPanel1.add(pd, java.awt.BorderLayout.CENTER);
+    public class Frame extends javax.swing.JFrame {
+        ListaDE lde;
+        PanelPersonas pd;
+        public Frame() {
+            initComponents();
+            lde = new ListaDE();
+            pd= new PanelPersonas(lde);
+            jScrollPane1.setViewportView(pd);
     }
 
     /**
@@ -147,28 +141,33 @@ public class Frame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//hola:)
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Obtenemos, de que forma lo quiere mostrar?, ascendente o descendente?
         String forma = (String)jComboBox1.getSelectedItem(); 
         boolean ascendente = forma.equals("Descendente");
         pd.setDescendente(ascendente);        
-        jScrollPane1.getHorizontalScrollBar().repaint();
-        System.out.println("Agregando: "+jTextField1.getText());
-        lde.insertanEnOrden(jTextField1.getText());
-        System.out.println(lde.getNodos());
-        jTextField1.setText("");
-        repaint();
-        pd.revalidate();
-        pd.repaint();
-        jScrollPane1.getHorizontalScrollBar().repaint();
+        if(jTextField1.getText().length()>0){
+            System.out.println("Agregando: "+jTextField1.getText());
+            lde.insertanEnOrden(jTextField1.getText());
+            System.out.println(lde.getNodos());
+            jTextField1.setText("");
+            pd.revalidate();
+            pd.repaint();
+        } else {
+            JOptionPane.showMessageDialog(null, "El nombre no debe estar vacio!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        lde.eliminar(jTextField1.getText());
-        jTextField1.setText("");
-        repaint();
-        pd.repaint();
+        if(!jTextField1.getText().isEmpty()){
+            lde.eliminar(jTextField1.getText());
+            jTextField1.setText("");
+            pd.revalidate();
+            pd.repaint();
+        } else {
+            JOptionPane.showMessageDialog(null, "El nombre a eliminar no debe estar vacio!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

@@ -10,7 +10,6 @@ public class PanelPersonas extends JPanel {
 
     private final int x0 = 30;  // margen de inicio (coordenada x para primer nombre)
     private final int y0 = 30; // altura base (coordenada y para todos los nombres)
-    private int actualy=30;
     private final int altoRect = 30;
     private final int espacio = 50; // tam de las flechitas
     private ListaDE personas;
@@ -68,8 +67,6 @@ public class PanelPersonas extends JPanel {
                 g2d.drawString(nombre, posXTexto, posYTexto); // Lo ponemos
             
             // Punteros
-            // nodos.szie() = 1
-            // nodos.size() = 5
                 if(i<nodos.size()-1){
                     int inicioX = actualx + anchoT;
                     int finX = inicioX + espacio-10;
