@@ -72,6 +72,15 @@ public class ListaDE {
         }
         System.out.println("NULL\n");
     }
+    public ArrayList<String> getAscendente(){
+        ArrayList<String> nodos = new ArrayList();
+        NodoDoble<String> actual = inicio;
+        while(actual!=null){
+            nodos.add(actual.dato);
+            actual = actual.siguiente;
+        }
+        return nodos;
+    }
     
     public ArrayList<String> getDescendente(){
         ArrayList<String> nodos = new ArrayList();
