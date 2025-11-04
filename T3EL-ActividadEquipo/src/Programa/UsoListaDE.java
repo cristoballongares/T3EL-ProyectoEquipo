@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author salva
+ * @author equipo
  */
 public class UsoListaDE {
 
@@ -44,9 +44,9 @@ public class UsoListaDE {
                                 "Ingresa el Nombre a Buscar", "Buscando Nombre", JOptionPane.INFORMATION_MESSAGE));
                         if (!listita.estaVacia()) {
                             if (listita.buscar(elemento) != null) {
-                                System.out.println("El elemento " + elemento + " fue encontrado");
+                                JOptionPane.showMessageDialog(null, "El elemento " + elemento + " fue encontrado");
                             } else {
-                                System.out.println("El elemento " + elemento + " no esta en la lista");
+                                JOptionPane.showMessageDialog(null, "El elemento " + elemento + " no esta en la lista");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "No hay nodos para buscar",
@@ -55,7 +55,8 @@ public class UsoListaDE {
                         break;
                     case 3:
                         if (!listita.estaVacia()) {
-                            listita.mostrarAscendente();
+                            JOptionPane.showMessageDialog(null, "Lista en forma Ascendente:\n " + listita.getAscendente(),
+                                        "Mostrar lista", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(null, "No hay nodos que mostrar",
                                     "Lista Vacia", JOptionPane.INFORMATION_MESSAGE);
@@ -63,7 +64,8 @@ public class UsoListaDE {
                         break;
                     case 4:
                         if (!listita.estaVacia()) {
-                            listita.mostrarDescendente();
+                            JOptionPane.showMessageDialog(null, "Lista en forma Descendente:\n " + listita.getDescendente(),
+                                        "Mostrar lista", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(null, "No hay nodos que mostrar",
                                     "Lista Vacia", JOptionPane.INFORMATION_MESSAGE);
